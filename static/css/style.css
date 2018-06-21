@@ -1,0 +1,19 @@
+body{
+    background-image: url("/static/images/weather.jpg");
+}
+
+.heading{
+    text-align: center;
+}
+
+body{
+    font-family: "Comic Sans MS";
+}
+
+a{
+    text-decoration: none;
+}
+
+.data-info{
+    background: lightskyblue;
+}

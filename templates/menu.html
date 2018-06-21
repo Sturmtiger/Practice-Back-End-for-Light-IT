@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Get the weather</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+    <h1 class="heading">Программа "Погода"</h1>
+
+<form action="/city-weather-info" method='post'>
+    <label><b>Enter the data:</b></label>
+    <br>
+    <select name="typeOfData">
+        <option value="forecast">Weather forecast for 5 days</option>
+        <option value="weather">Current weather</option>
+    </select>
+    <br>
+    <input type="text" placeholder="City" name="city">
+    <br>
+    <input type="text" placeholder="Country" name="country">
+    <br>
+    <input type="submit" value="Get the info">
+    <!--expect-->
+    {% if error %}
+        <p style="color: red">{{ error }}</p>
+    {% endif %}
+    <!--Не введен город-->
+    {% if notCity %}
+        <p style="color: red">{{ notCity }} </p>
+    {% endif %}
+    <br><br>
+    <b>Способы ввода(прим.):</b>
+    <br>
+    1) Berlin, Germany
+    <br>
+    2) Berlin, DE
+    <br>
+    3) Запоріжжя, Україна(Zaporizhzhia, UA(Ukraine))
+    <p><span style="color: red">Внимание!</span> Настоятельно рекомендуем использовать английский язык.</p>
+    <p>А именно, способы ввода <em>1)</em> и <em>2)</em>, так как работа с API на русском - несовершенна и может генерировать неверные данные!</p>
+    <p>Для поиска украинских городов вы можете использовать украинский язык, он будет переформатирован системой в транслит и город будет найден. Способ ввода: <em>3)</em></p>
+    <p>Аналогично с российскими городами, можно использовать русский язык.</p>
+
+</form>
+</body>
+</html>

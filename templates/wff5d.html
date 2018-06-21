@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ '{} ({})'.format(data['city']['name'], data['city']['country']) }} Прогноз погоды</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <h1 class="heading">Прогноз погоды на 5 дней с интервалом в 3 часа. Город
+        {{ '{} ({})'.format(data['city']['name'], data['city']['country']) }}</h1>
+    <button><a href="/">Вернуться назад</a></button>
+    <table class="data-info" border="1" cellspacing="0" align="center">
+        <tr>
+            <th>Дата и время</th>
+            <th>Температура</th>
+            <th>Влажность</th>
+            <th>Ветер</th>
+            <th>Погодные условия</th>
+        </tr>
+    {% for fc in data['list'] %}
+        <tr>
+            <td>{{ fc['dt_txt'] }}</td>
+            <td>{{ '{0:+3.1f}'.format(fc['main']['temp']) }}<sup>o</sup>C</td>
+            <td>{{ fc['main']['humidity'] }}%</td>
+            <td>{{ fc['wind']['speed'] }} м/с</td>
+            <td>{{ fc['weather'][0]['description'].capitalize() }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+
+
+</body>
+</html>

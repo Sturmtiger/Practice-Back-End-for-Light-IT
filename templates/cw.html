@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Текущая погода в городе {{ '{} ({})'.format(data['name'], data['sys']['country']) }}</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <button><a href="/">Вернуться назад</a></button>
+    <h1 class="heading">Текущая погода в городе {{ '{} ({})'.format(data['name'], data['sys']['country']) }}</h1>
+    <table class="data-info" border="1" cellspacing="0" align="center">
+    <tr>
+        <th>Текущая температура</th>
+        <th>Минимальная температура</th>
+        <th>Максимальная температура</th>
+        <th>Влажность</th>
+        <th>Ветер</th>
+        <th>Погодные условия</th>
+    </tr>
+    <tr>
+        <td>{{ '{0:+3.1f}'.format(data['main']['temp']) }}<sup>o</sup>C</td>
+        <td>{{ '{0:+3.1f}'.format(data['main']['temp_min']) }}<sup>o</sup>C</td>
+        <td>{{ '{0:+3.1f}'.format(data['main']['temp_max']) }}<sup>o</sup>C</td>
+        <td>{{ data['main']['humidity'] }}%</td>
+        <td>{{ data['wind']['speed'] }} м/с</td>
+        <td>{{ data['weather'][0]['description'].capitalize() }}</td>
+    </tr>
+    </table>
+
+</body>
+</html>
